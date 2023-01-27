@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator2</title>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+
+                <td colspan="4"><input type="text" name="" id="result_show"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="C" onclick="deleteFild()"></td>
+                <td><input type="button" value="(" onclick="calculetor('(')"></td>
+                <td><input type="button" value=")" onclick="calculetor(')')"></td>
+                <td><input type="button" value="&lt;" onclick="LastDelet()"></td>
+
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="calculetor('7')"></td>
+                <td><input type="button" value="8" onclick="calculetor('8')"></td>
+                <td><input type="button" value="9" onclick="calculetor('9')"></td>
+                <td><input type="button" value="+" onclick="calculetor('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="calculetor('4')"></td>
+                <td><input type="button" value="5" onclick="calculetor('5')"></td>
+                <td><input type="button" value="6" onclick="calculetor('6')"></td>
+                <td><input type="button" value="-" onclick="calculetor('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="calculetor('1')"></td>
+                <td><input type="button" value="2" onclick="calculetor('2')"></td>
+                <td><input type="button" value="3" onclick="calculetor('3')"></td>
+                <td><input type="button" value="*" onclick="calculetor('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" onclick="calculetor('0')"></td>
+                <td><input type="button" value="." onclick="calculetor('.')"></td>
+                <td><input type="button" value="/" onclick="calculetor('/')"></td>
+                <td><input type="button" value="=" onclick="Answer()"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function calculetor(value) {
+            document.getElementById("result_show").value += value;
+            play();
+        }
+        function deleteFild() {
+            document.getElementById("result_show").value = "";
+            play();
+
+        }
+        function LastDelet() {
+            let val = document.getElementById("result_show").value;
+            let val2 = val.slice(0, val.length - 1);
+            document.getElementById("result_show").value = val2;
+            play();
+
+        }
+        function Answer() {
+            if(document.getElementById("result_show").value==""){
+                document.getElementById("result_show").value="No Value"
+            }else{
+                let Ans = document.getElementById("result_show").value;
+            let Ans2 = eval(Ans)
+            document.getElementById("result_show").value = Ans2;
+            play();  
+            }
+          
+
+        }
+
+        function play() {
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+body{
+    background-color: #b1a3a8;
+
+}
+        input[type="text"] {
+            width: 270px;
+            height: 70px;
+            font-size: 35px;
+            text-align: right;
+            overflow-x: scroll;
+            border: none !important;
+            outline: none !important;
+            padding: 5px;
+            margin: 10px;
+            background-image: url(display.jpg);
+            background-repeat: no-repeat;
+            background-size: 270px 100%;
+            background-position: center;
+            padding-right: 15px;
+
+        }
+
+        input[type="button"] {
+            /* width: 90%;
+            height: 90%; */
+            width: 50.2px;
+            height: 50.2px;
+            border: none !important;
+            outline: none !important;
+            cursor: pointer;
+            font-size: 30px;
+            color: #000000;
+            /* background-color: #6b55a7; */
+            padding: 10px;
+            border-radius: 10%;
+            margin-left: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            background-image: url(button.png);
+            background-position: center;
+            background-size: contain;
+
+
+        }
+
+        /* input[type="button"]:hover {
+            background-color: rgb(124, 124, 245);
+            transition: .2s ease-in-out;
+            color: rgb(0, 0, 0);
+            /* border-radius: 20px; */
+
+
+         */
+
+        td {
+            width: 50.2px;
+            height: 50.2px;
+            border: none !important;
+            outline: none !important;
+
+        }
+
+        table {
+            border-collapse: collapse;
+            border: none !important;
+            outline: none !important;
+            background-color: #2e2463;
+            background-color: #B1C2D2;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+            box-shadow: 0 0 10px 0 #776d6d;
+
+
+        }
+    </style>
+    <audio id="audio" src="click.mp3"></audio>
+</body>
+
+</html>
